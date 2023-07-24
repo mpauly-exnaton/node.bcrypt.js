@@ -1,6 +1,7 @@
 {
   "variables": {
-    "NODE_VERSION%":"<!(node -p \"process.versions.node.split(\\\".\\\")[0]\")"
+    "NODE_VERSION%":"<!(node -p \"process.versions.node.split(\\\".\\\")[0]\")",
+    "module_name":"bcrypt_lib",
   },
   'targets': [
     {
@@ -46,16 +47,5 @@
         }],
       ],
     },
-    {
-      "target_name": "action_after_build",
-      "type": "none",
-      "dependencies": [ "<(module_name)" ],
-      "copies": [
-        {
-          "files": [ "<(PRODUCT_DIR)/<(module_name).node" ],
-          "destination": "<(module_path)"
-        }
-      ]
-    }
   ]
 }
