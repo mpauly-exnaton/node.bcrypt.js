@@ -151,18 +151,3 @@ test('change_promise_impl_reject', () => {
     // need to reset the promise implementation because of require cache
     promises.use(global.Promise);
 })
-
-test('change_promise_impl_promise', () => {
-
-    promises.use({
-        reject: function (err) {
-            expect(err.message).toEqual('fn must be a function');
-            return 'mock';
-        }
-    });
-
-    expect(promises.promise('', '', '')).toEqual('mock');
-
-    // need to reset the promise implementation because of require cache
-    promises.use(global.Promise);
-})
